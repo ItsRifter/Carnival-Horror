@@ -147,7 +147,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 75445821}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.4532132, y: 2.3485968, z: -2.7369905}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1179,7 +1179,7 @@ GameObject:
   - component: {fileID: 1663740314}
   - component: {fileID: 1663740313}
   - component: {fileID: 1663740312}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1286,7 +1286,8 @@ GameObject:
   - component: {fileID: 1708161899}
   - component: {fileID: 1708161898}
   - component: {fileID: 1708161897}
-  m_Layer: 0
+  - component: {fileID: 1708161902}
+  m_Layer: 9
   m_Name: TestGrab
   m_TagString: Usable
   m_Icon: {fileID: 0}
@@ -1406,6 +1407,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1708161902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1708161896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c2744cf82a43ed49a48f7ac199b8f9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mask:
+    serializedVersion: 2
+    m_Bits: 64
+  minVelocity: -1.5
+  distractRange: 64
 --- !u!1 &1721846470
 GameObject:
   m_ObjectHideFlags: 0
@@ -1726,7 +1744,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f64ee195a9746524bb4d52c1cd199ce4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eyeRange: 50
+  eyeRange: 15
   throwForce: 650
 --- !u!114 &1782180586
 MonoBehaviour:

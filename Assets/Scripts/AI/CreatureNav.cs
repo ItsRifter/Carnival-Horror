@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Creature : MonoBehaviour
+public class CreatureNav : MonoBehaviour
 {
     public NavMeshAgent agent;
     private float searchRadius;

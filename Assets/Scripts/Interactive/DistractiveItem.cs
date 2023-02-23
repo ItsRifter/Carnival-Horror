@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class DistractiveItem : MonoBehaviour
 {
@@ -34,7 +35,10 @@ public class DistractiveItem : MonoBehaviour
         {
             foreach (var obj in Physics.OverlapSphere(transform.position, distractRange))
             {
-                
+                if(obj.tag == "Creature")
+                {
+                    obj.GetComponent<CreatureNav>().destination = transform.position;
+                }
             }
 
             canDistract = false;
