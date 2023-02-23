@@ -33,11 +33,11 @@ public class DistractiveItem : MonoBehaviour
         //then set the boolean to false
         if(rb.velocity.y > 0.1f && canDistract)
         {
-            foreach (var obj in Physics.OverlapSphere(transform.position, distractRange))
+            foreach (var obj in Physics.OverlapSphere(rb.transform.position, distractRange))
             {
                 if(obj.tag == "Creature")
                 {
-                    obj.GetComponent<CreatureNav>().destination = transform.position;
+                    obj.GetComponent<CreatureNav>().destination = rb.transform.position;
                 }
             }
 
