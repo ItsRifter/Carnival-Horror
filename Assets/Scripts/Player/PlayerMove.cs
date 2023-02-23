@@ -57,8 +57,8 @@ public class PlayerMove : MonoBehaviour
         controller.Move(move * speed * Time.deltaTime);
 
         //If we pressed the jump key AND we're grounded, make the player jump
-        if(Input.GetButtonDown("Jump") && isGrounded)
-            velocity.y = Mathf.Sqrt(jumpHeight * -2.0f * gravity);
+        /*if(Input.GetButtonDown("Jump") && isGrounded)
+            velocity.y = Mathf.Sqrt(jumpHeight * -2.0f * gravity);*/
 
         //If the left control is held down...
         if(Input.GetKey(KeyCode.LeftControl))
