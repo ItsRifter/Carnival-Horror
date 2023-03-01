@@ -248,6 +248,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &498863158 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2145070104707556884, guid: f022655d1e7f5fe44bcd7237299106c7, type: 3}
+  m_PrefabInstance: {fileID: 2145070105501049458}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &553852736
 GameObject:
   m_ObjectHideFlags: 0
@@ -1762,6 +1767,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7259067261981005103, guid: 0b14d5cfc0d27ec42abf1f70bd10ba6c, type: 3}
+      propertyPath: creature
+      value: 
+      objectReference: {fileID: 498863158}
+    - target: {fileID: 7259067261981005103, guid: 0b14d5cfc0d27ec42abf1f70bd10ba6c, type: 3}
+      propertyPath: warnings.Array.data[0].WarningRange
+      value: 92
+      objectReference: {fileID: 0}
+    - target: {fileID: 7259067261981005103, guid: 0b14d5cfc0d27ec42abf1f70bd10ba6c, type: 3}
+      propertyPath: warnings.Array.data[1].WarningRange
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 8695668245093823481, guid: 0b14d5cfc0d27ec42abf1f70bd10ba6c, type: 3}
       propertyPath: m_RootOrder
       value: 6
