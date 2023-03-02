@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 2145070104707556891}
   - component: {fileID: 2145070104707556885}
   - component: {fileID: 2145070104707556893}
+  - component: {fileID: 280470728}
   m_Layer: 0
   m_Name: Creature
   m_TagString: Creature
@@ -36,7 +37,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2145070104707556895
 MeshFilter:
@@ -296,9 +297,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 2145070104707556888}
+  hearingRadius: 20
   destination: {x: 0, y: 0, z: 0}
   randomDestinationFound: 0
   hasReachedDestination: 0
   playerTransform: {fileID: 0}
   maxWaitTime: 5
   waitTimeLeft: 0
+  sphereCollider: {fileID: 280470728}
+  canHearPlayer: 0
+  lastHeardPlayerPosition: {x: 0, y: 0, z: 0}
+--- !u!135 &280470728
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2145070104707556884}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 1
+  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
