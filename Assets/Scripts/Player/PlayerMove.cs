@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security;
 using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
@@ -25,6 +26,8 @@ public class PlayerMove : MonoBehaviour
     bool canStand;
     float standingSpeed = 5.0f;
 
+    public static bool allowControls = true;
+
     // Start is called before the first frame update
 
     void Start()
@@ -32,9 +35,24 @@ public class PlayerMove : MonoBehaviour
         controller = GetComponent<CharacterController>();
     }
 
+    //Toggles the player controls
+    public static void ToggleControls(bool setter)
+    {
+        allowControls = setter;
+        PlayerLook.allowLooking = setter;
+    }
+
     // Update is called once per frame
     void Update()
     {
+        //If controls are disallowed, still allow last movement + gravity then ignore player controls
+        if (!allowControls)
+        {
+			velocity.y += gravity * Time.deltaTime;
+			controller.Move(velocity * Time.deltaTime);
+			return;
+        }
+
         //Checks if the player after finish crouching can they stand up
         canStand = !Physics.CheckSphere(heightChecker.position, checkDist, heightMask);
 

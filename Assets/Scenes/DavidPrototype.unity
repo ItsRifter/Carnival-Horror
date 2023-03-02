@@ -1102,7 +1102,7 @@ Transform:
   m_GameObject: {fileID: 1663740311}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 1, z: 2}
+  m_LocalScale: {x: 7.2774954, y: 3.6387477, z: 7.2774954}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1690,6 +1690,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2145070104707556893, guid: f022655d1e7f5fe44bcd7237299106c7, type: 3}
+      propertyPath: attackDist
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2145070104707556893, guid: f022655d1e7f5fe44bcd7237299106c7, type: 3}
+      propertyPath: hearingRadius
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 2145070104707556893, guid: f022655d1e7f5fe44bcd7237299106c7, type: 3}
       propertyPath: playerTransform
       value: 
       objectReference: {fileID: 1891910519}
@@ -1724,7 +1732,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4329626537584449500, guid: a69e4745d7536664c88592be3dd832a9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.06
+      value: -19.23
       objectReference: {fileID: 0}
     - target: {fileID: 4329626537584449500, guid: a69e4745d7536664c88592be3dd832a9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1793,7 +1801,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8695668245093823481, guid: 0b14d5cfc0d27ec42abf1f70bd10ba6c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.67
+      value: -23.39
       objectReference: {fileID: 0}
     - target: {fileID: 8695668245093823481, guid: 0b14d5cfc0d27ec42abf1f70bd10ba6c, type: 3}
       propertyPath: m_LocalRotation.w

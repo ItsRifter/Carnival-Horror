@@ -18,6 +18,9 @@ public class CreatureNav : MonoBehaviour
     public bool canHearPlayer;
     public Vector3 lastHeardPlayerPosition;
 
+    [SerializeField]
+    float attackDist;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +32,13 @@ public class CreatureNav : MonoBehaviour
     // Update is called once per frame
     void Update()
     { 
+        //If the creature is within range of player to attack
+        if(Physics.CheckSphere(transform.position, attackDist, LayerMask.GetMask("Player") ) )
+        {
+            PlayerMove.ToggleControls(false);
+            PlayerLook.KillPlayer();
+        }
+
         //Find a random point to go to if we haven't already.
         if (!randomDestinationFound && CheckForRandomNavMeshPoint(playerTransform.position, randomSearchRadius, out destination))
         {
