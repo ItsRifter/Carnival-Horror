@@ -17,6 +17,7 @@ public class CreatureNav : MonoBehaviour
     public SphereCollider sphereCollider;
     public bool canHearPlayer;
     public Vector3 lastHeardPlayerPosition;
+    public PlayerMove playerMove;
 
     [SerializeField]
     float attackDist;
@@ -46,7 +47,8 @@ public class CreatureNav : MonoBehaviour
         }
         else
         {
-            //Move to destination then wait for specified period of time once we've reached it.
+            //Move to random destination then wait for specified period of time once we've reached it.
+            //Once creature has finished waiting, it goes back to moving randomly.
             agent.SetDestination(destination);
 
             if (agent.remainingDistance <= 1.0f)
@@ -55,18 +57,22 @@ public class CreatureNav : MonoBehaviour
             }
         }
 
-        if(Vector3.Distance(transform.position, playerTransform.position) <= hearingRadius)
+        //If player is within hearing range of the creature, set canHearPlayer to true.
+        if(Vector3.Distance(transform.position, playerTransform.position) <= hearingRadius && !playerMove.isHoldingBreath)
         {
             print("Moving to last heard player position");
             lastHeardPlayerPosition = playerTransform.position;
             canHearPlayer = true;
+        }else if(Vector3.Distance(transform.position, playerTransform.position) <= hearingRadius && playerMove.isHoldingBreath)
+        {
+            print("Player is within hearing radius, but player is holding their breath so ignore them.");
         }
 
-        if(canHearPlayer)
+        if (canHearPlayer)
         {
             agent.SetDestination(lastHeardPlayerPosition);
 
-            if(agent.remainingDistance <= 1.0f && Vector3.Distance(transform.position, playerTransform.position) > hearingRadius)
+            if(agent.remainingDistance <= 1.0f && Vector3.Distance(transform.position, playerTransform.position) > hearingRadius || playerMove.isHoldingBreath)
             {
                 canHearPlayer = false;
             }

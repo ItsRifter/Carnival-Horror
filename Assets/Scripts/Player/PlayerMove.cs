@@ -27,11 +27,16 @@ public class PlayerMove : MonoBehaviour
     float standingSpeed = 5.0f;
 
     public static bool allowControls = true;
+    public float totalBreathingTime;
+    public float breathingTimeLeft;
+    public bool isHoldingBreathOnCooldown;
+    public bool isHoldingBreath;
 
     // Start is called before the first frame update
 
     void Start()
     {
+        breathingTimeLeft = totalBreathingTime;
         controller = GetComponent<CharacterController>();
     }
 
@@ -96,5 +101,39 @@ public class PlayerMove : MonoBehaviour
         //Applies gravity
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
+
+        //Hold breath when spacebar is pressed.
+        if(Input.GetKey(KeyCode.Space) && breathingTimeLeft > 0 && !isHoldingBreathOnCooldown) 
+        {
+            HoldBreath();
+        }
+        else
+        {
+            isHoldingBreath = false;
+            if (breathingTimeLeft < totalBreathingTime)
+            {
+                breathingTimeLeft += Time.deltaTime * .3f;
+                print("Slowly recovering breath");
+            }
+            else
+            {
+                breathingTimeLeft = totalBreathingTime;
+                isHoldingBreathOnCooldown = false;
+                isHoldingBreath = false;
+            }
+        }
 	}
+
+    void HoldBreath()
+    {
+        isHoldingBreath = true;
+        breathingTimeLeft -= Time.deltaTime;
+        print("Hold breath");
+        if (breathingTimeLeft < 0)
+        {
+            isHoldingBreath = false;
+            isHoldingBreathOnCooldown = true;
+            breathingTimeLeft = 0;
+        }
+    }
 }
