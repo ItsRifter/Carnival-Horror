@@ -44,18 +44,14 @@ public class PlayerLook : MonoBehaviour
 
 	}
 
-    float deathRot;
-
     void Update()
     {
         //If the player is dead, do death aniamtions
         if(isDead)
         {
-            //deathRot = Mathf.Lerp(deathRot, 1.0f, Time.deltaTime);
-
-            //playerBody.Rotate(Vector3.left, deathRot);
-           
-            playerBody.transform.rotation = Quaternion.RotateTowards(playerBody.transform.rotation, new Quaternion(-0.5f, 0f, 0f, 0f), Time.deltaTime * 50.0f);
+            playerBody.transform.rotation = 
+                Quaternion.RotateTowards(playerBody.transform.rotation, 
+                new Quaternion(-0.5f, 0f, 0f, 0f), Time.deltaTime * 50.0f);
 
 			StartCoroutine(AwaitDeath());
 		}

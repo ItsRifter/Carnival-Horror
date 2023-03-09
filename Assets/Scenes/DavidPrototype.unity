@@ -1633,6 +1633,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &2025801167 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8695668245093823484, guid: 0b14d5cfc0d27ec42abf1f70bd10ba6c, type: 3}
+  m_PrefabInstance: {fileID: 8695668246976819342}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 355b8b901403a034f83933d45d382a70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2145070105501049458
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1693,6 +1704,10 @@ PrefabInstance:
       propertyPath: attackDist
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2145070104707556893, guid: f022655d1e7f5fe44bcd7237299106c7, type: 3}
+      propertyPath: playerMove
+      value: 
+      objectReference: {fileID: 2025801167}
     - target: {fileID: 2145070104707556893, guid: f022655d1e7f5fe44bcd7237299106c7, type: 3}
       propertyPath: hearingRadius
       value: 16
