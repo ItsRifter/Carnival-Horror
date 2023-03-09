@@ -95,10 +95,7 @@ public class DialogueTree : MonoBehaviour
                 {
                     //Hide any previous option buttons
                     foreach (var btn in optionBtns)
-                    {
-                        Debug.Log(btn);
                         btn.SetActive(false);
-                    }
 
                     speakerBox.text = dialogueSegments[curDialogueIndex].speakerName;
                     dialogueTextBox.text = dialogueSegments[curDialogueIndex].message;
