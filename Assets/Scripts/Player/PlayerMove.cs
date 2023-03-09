@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Security;
+using TMPro;
 using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
@@ -31,6 +32,7 @@ public class PlayerMove : MonoBehaviour
     public float breathingTimeLeft;
     public bool isHoldingBreathOnCooldown;
     public bool isHoldingBreath;
+    public TMP_Text holdingBreathText;
 
     // Start is called before the first frame update
 
@@ -109,7 +111,9 @@ public class PlayerMove : MonoBehaviour
         }
         else
         {
+            holdingBreathText.text = "Not holding breath";
             isHoldingBreath = false;
+            //Slowly regain breath while not holding breath.
             if (breathingTimeLeft < totalBreathingTime)
             {
                 breathingTimeLeft += Time.deltaTime * .3f;
@@ -129,6 +133,9 @@ public class PlayerMove : MonoBehaviour
         isHoldingBreath = true;
         breathingTimeLeft -= Time.deltaTime;
         print("Hold breath");
+        holdingBreathText.text = "Holding Breath";
+
+        //If we can no longer hold our breath, take a deep breath.
         if (breathingTimeLeft < 0)
         {
             isHoldingBreath = false;
