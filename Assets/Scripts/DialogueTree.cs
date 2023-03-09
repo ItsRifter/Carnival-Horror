@@ -85,6 +85,7 @@ public class DialogueTree : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E) || shouldUpdate)
             {
                 shouldUpdate = false;
+                PlayerLook.ToggleLooking(false);
                 PlayerLook.SetCursorState(CursorLockMode.Confined);
 
                 playerIsTalking = true;
@@ -150,6 +151,7 @@ public class DialogueTree : MonoBehaviour
 
         if (!playerIsTalking)
         {
+            PlayerLook.ToggleLooking(true);
             PlayerLook.SetCursorState(CursorLockMode.Locked);
             curDialogueIndex = 0;
             playerMove.enabled = true;

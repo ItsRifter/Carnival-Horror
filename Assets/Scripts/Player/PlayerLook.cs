@@ -73,6 +73,11 @@ public class PlayerLook : MonoBehaviour
         playerBody.Rotate(Vector3.up * mouseX);
     }
 
+    public static void ToggleLooking(bool toggle)
+    {
+        allowLooking = toggle;
+    }
+
     public static void SetCursorState(CursorLockMode state)
     {
         Cursor.lockState = state;
