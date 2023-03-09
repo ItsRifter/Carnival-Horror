@@ -72,4 +72,9 @@ public class PlayerLook : MonoBehaviour
         transform.localRotation = Quaternion.Euler(xRot, 0.0f, 0.0f);
         playerBody.Rotate(Vector3.up * mouseX);
     }
+
+    public static void SetCursorState(CursorLockMode state)
+    {
+        Cursor.lockState = state;
+    }
 }
