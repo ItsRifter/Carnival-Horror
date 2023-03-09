@@ -457,7 +457,7 @@ Transform:
   m_GameObject: {fileID: 179022924}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 1, z: 2}
+  m_LocalScale: {x: 5.7654, y: 2.8827, z: 5.7654}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -584,7 +584,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2145070104707556884, guid: f022655d1e7f5fe44bcd7237299106c7, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2145070104707556892, guid: f022655d1e7f5fe44bcd7237299106c7, type: 3}
       propertyPath: m_RootOrder
@@ -694,7 +694,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 5681ad81d12d7344bbaead4b7eeb7620, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: c573a2da049e0b14db5672d492afbb7c, type: 2}
   m_BuildHeightMesh: 0
 --- !u!4 &405831327
 Transform:
@@ -1252,7 +1252,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8695668245093823484, guid: 0b14d5cfc0d27ec42abf1f70bd10ba6c, type: 3}
       propertyPath: totalBreathingTime
-      value: 10
+      value: 1000000
       objectReference: {fileID: 0}
     - target: {fileID: 8695668245093823486, guid: 0b14d5cfc0d27ec42abf1f70bd10ba6c, type: 3}
       propertyPath: m_Name
@@ -1699,19 +1699,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20e11294161aee643b10130d67dececb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueText:
-  - Hello
-  - Please help me.
-  - Thank you.
-  currentDialogueLine: -1
   dialogueActiviationRange: 4
   playerTransform: {fileID: 767469695}
   dialoguePanelGO: {fileID: 601249668}
   dialogueTextBox: {fileID: 2060690235}
-  sphereCollider: {fileID: 1083560879}
+  speakerBox: {fileID: 0}
   dialoguePrompt: {fileID: 5814266}
   playerMove: {fileID: 767469699}
-  playerIsTalking: 0
+  optionBtns: []
+  dialogueSegments: []
 --- !u!136 &1083560875
 CapsuleCollider:
   m_ObjectHideFlags: 0

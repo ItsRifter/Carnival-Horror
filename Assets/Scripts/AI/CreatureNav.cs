@@ -18,6 +18,7 @@ public class CreatureNav : MonoBehaviour
     public bool canHearPlayer;
     public Vector3 lastHeardPlayerPosition;
     public PlayerMove playerMove;
+    public bool isMovingToLastHeardPlayerPos;
 
     [SerializeField]
     float attackDist;
@@ -41,7 +42,7 @@ public class CreatureNav : MonoBehaviour
         }
 
         //Find a random point to go to if we haven't already.
-        if (!randomDestinationFound && CheckForRandomNavMeshPoint(playerTransform.position, randomSearchRadius, out destination))
+        if (!randomDestinationFound && CheckForRandomNavMeshPoint(playerTransform.position, randomSearchRadius, out destination) && !isMovingToLastHeardPlayerPos)
         {
             randomDestinationFound = true;
         }
@@ -63,18 +64,20 @@ public class CreatureNav : MonoBehaviour
             print("Moving to last heard player position");
             lastHeardPlayerPosition = playerTransform.position;
             canHearPlayer = true;
+            isMovingToLastHeardPlayerPos = true;
         }else if(Vector3.Distance(transform.position, playerTransform.position) <= hearingRadius && playerMove.isHoldingBreath)
         {
+            canHearPlayer = false;
             print("Player is within hearing radius, but player is holding their breath so ignore them.");
         }
 
-        if (canHearPlayer)
+        if (isMovingToLastHeardPlayerPos)
         {
             agent.SetDestination(lastHeardPlayerPosition);
 
-            if(agent.remainingDistance <= 1.0f && Vector3.Distance(transform.position, playerTransform.position) > hearingRadius || playerMove.isHoldingBreath)
+            if(agent.remainingDistance <= 1.0f)
             {
-                canHearPlayer = false;
+                isMovingToLastHeardPlayerPos = false;
             }
         }
     }
