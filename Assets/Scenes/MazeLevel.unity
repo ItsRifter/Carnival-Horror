@@ -4495,6 +4495,7 @@ GameObject:
   - component: {fileID: 1303999334}
   - component: {fileID: 1303999333}
   - component: {fileID: 1303999332}
+  - component: {fileID: 1303999335}
   m_Layer: 0
   m_Name: NPC
   m_TagString: Untagged
@@ -4514,7 +4515,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20e11294161aee643b10130d67dececb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueActiviationRange: 10
+  dialogueActiviationRange: 4
   playerTransform: {fileID: 1001121595}
   dialoguePanelGO: {fileID: 623341141}
   dialogueTextBox: {fileID: 580699489}
@@ -4525,18 +4526,33 @@ MonoBehaviour:
   - {fileID: 387567220}
   - {fileID: 1550309412}
   dialogueSegments:
-  - speakerName: Test
-    message: Hello
+  - speakerName: Conrad
+    message: Hippy bobbity doo
     options:
-    - optionText: No
+    - optionText: Who are you?
       branchPath: 1
+    - optionText: What is this place?
+      branchPath: 2
     next: 0
     endOfTree: 0
-  - speakerName: Test
-    message: Cool
-    options:
-    - optionText: Yes
-      branchPath: 2
+  - speakerName: Conrad
+    message: Good sir, I am Conrad
+    options: []
+    next: 3
+    endOfTree: 0
+  - speakerName: Conrad
+    message: You are in our lovely Karnival good sir
+    options: []
+    next: 3
+    endOfTree: 0
+  - speakerName: Conrad
+    message: We hope you enjoy your stay here
+    options: []
+    next: 4
+    endOfTree: 0
+  - speakerName: 
+    message: 
+    options: []
     next: 0
     endOfTree: 1
 --- !u!4 &1303999331
@@ -4626,6 +4642,27 @@ CapsuleCollider:
   m_Radius: 0.52
   m_Height: 2.13
   m_Direction: 1
+  m_Center: {x: 0.001081124, y: 0, z: -0.48532993}
+--- !u!135 &1303999335
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1303999329}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.9967869
   m_Center: {x: 0.001081124, y: 0, z: -0.48532993}
 --- !u!1 &1337895807
 GameObject:
