@@ -45,7 +45,7 @@ public class PlayerAudio : MonoBehaviour
         RaycastHit hit;
         Vector3 dir = (creatureTransform.position - transform.position).normalized;
         hits = Physics.RaycastAll(transform.position, dir, distanceBetweenPlayerAndCreature, ~layerMask);
-        print("Number of raycast hits: " + hits.Length);
+        //print("Number of raycast hits: " + hits.Length);
         CreatureWithinViewFrustrum();
 
         if (Physics.Raycast(transform.position, dir, out hit, Mathf.Infinity, ~layerMask) && hit.transform == creatureTransform && CreatureWithinViewFrustrum())
