@@ -326,7 +326,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 128.5}
+  m_AnchoredPosition: {x: 0, y: 98.6}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &101809038
@@ -2638,7 +2638,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &750440578
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3491,7 +3491,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000005722, y: -61.868}
+  m_AnchoredPosition: {x: 6, y: -109}
   m_SizeDelta: {x: 94.6976, y: 31.6297}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &948548498
@@ -5870,8 +5870,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -249, y: -144.14}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: -206.1, y: -157.4}
+  m_SizeDelta: {x: 206.5969, y: 32.2706}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1662378455
 MonoBehaviour:
@@ -6141,10 +6141,10 @@ RectTransform:
   m_Father: {fileID: 2049559795}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00012207031, y: 0}
-  m_SizeDelta: {x: -766.2664, y: -119.7291}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.000038146973, y: 0.0000038146973}
+  m_SizeDelta: {x: 465.376, y: 286.68}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1767307988
 MonoBehaviour:
@@ -6429,7 +6429,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.00011444, y: -61.868}
+  m_AnchoredPosition: {x: 5.9998646, y: -109}
   m_SizeDelta: {x: 63.4, y: 23.735}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1818716234
@@ -7222,7 +7222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
