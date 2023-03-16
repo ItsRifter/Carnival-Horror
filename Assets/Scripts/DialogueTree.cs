@@ -73,7 +73,7 @@ public class DialogueTree : MonoBehaviour
     {
         RaycastHit hit;
         //If we are looking at NPC and we're within range, enable button prompt.
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, dialogueActiviationRange) && Vector3.Distance(transform.position, playerTransform.position) <= dialogueActiviationRange)
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, dialogueActiviationRange) && hit.transform == this.transform && Vector3.Distance(transform.position, playerTransform.position) <= dialogueActiviationRange)
         {
             //If the player isn't talking, show prompt, else hide prompt
             if(!playerIsTalking)

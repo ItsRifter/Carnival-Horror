@@ -4536,8 +4536,8 @@ MonoBehaviour:
     message: Cool
     options:
     - optionText: Yes
-      branchPath: 1
-    next: 1
+      branchPath: 2
+    next: 0
     endOfTree: 1
 --- !u!4 &1303999331
 Transform:
