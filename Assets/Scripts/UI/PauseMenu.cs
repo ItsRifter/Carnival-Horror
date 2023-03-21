@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,7 +9,9 @@ public class PauseMenu : MonoBehaviour
     public static bool isPaused = false;
     public GameObject pauseMenu;
 
-    void Update()
+    GameObject lastMenu;
+
+	void Update()
     {
         if(Input.GetKeyDown(KeyCode.Escape))
         {
@@ -33,6 +36,20 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(false);
         Time.timeScale = 1.0f;
         Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    public void OpenMenu(GameObject toMenu)
+    {
+        pauseMenu.SetActive(false);
+        toMenu.SetActive(true);
+
+        lastMenu = toMenu;
+	}
+
+    public void Back(GameObject toMenu)
+    {
+		lastMenu.SetActive(false);
+		toMenu.SetActive(true);
     }
 
     public void QuitGame()
