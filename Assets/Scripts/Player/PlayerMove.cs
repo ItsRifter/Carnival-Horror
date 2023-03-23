@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Security;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -33,11 +34,14 @@ public class PlayerMove : MonoBehaviour
     public bool isHoldingBreathOnCooldown;
     public bool isHoldingBreath;
     public TMP_Text holdingBreathText;
+    public Slider breathingUIBar;
+    public Image barFillImage;
 
     // Start is called before the first frame update
 
     void Start()
     {
+        breathingUIBar.maxValue = totalBreathingTime;
         breathingTimeLeft = totalBreathingTime;
         controller = GetComponent<CharacterController>();
     }
@@ -52,6 +56,7 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        breathingUIBar.value = breathingTimeLeft;
         //If controls are disallowed, still allow last movement + gravity then ignore player controls
         if (!allowControls)
         {
@@ -116,6 +121,7 @@ public class PlayerMove : MonoBehaviour
             //Slowly regain breath while not holding breath.
             if (breathingTimeLeft < totalBreathingTime)
             {
+                barFillImage.color = Color.grey;
                 breathingTimeLeft += Time.deltaTime * .3f;
                 print("Slowly recovering breath");
             }
