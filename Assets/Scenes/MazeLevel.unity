@@ -4875,7 +4875,7 @@ GameObject:
   - component: {fileID: 919208432}
   - component: {fileID: 919208433}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: Breathing UI Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11071,7 +11071,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2145070104707556893, guid: f022655d1e7f5fe44bcd7237299106c7, type: 3}
       propertyPath: attackDist
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2145070104707556893, guid: f022655d1e7f5fe44bcd7237299106c7, type: 3}
       propertyPath: playerMove
