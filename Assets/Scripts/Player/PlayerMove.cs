@@ -121,12 +121,12 @@ public class PlayerMove : MonoBehaviour
             //Slowly regain breath while not holding breath.
             if (breathingTimeLeft < totalBreathingTime)
             {
-                barFillImage.color = Color.grey;
                 breathingTimeLeft += Time.deltaTime * .3f;
                 print("Slowly recovering breath");
             }
             else
             {
+                barFillImage.color = Color.white;
                 breathingTimeLeft = totalBreathingTime;
                 isHoldingBreathOnCooldown = false;
                 isHoldingBreath = false;
@@ -144,6 +144,7 @@ public class PlayerMove : MonoBehaviour
         //If we can no longer hold our breath, take a deep breath.
         if (breathingTimeLeft < 0)
         {
+            barFillImage.color = Color.grey;
             isHoldingBreath = false;
             isHoldingBreathOnCooldown = true;
             breathingTimeLeft = 0;

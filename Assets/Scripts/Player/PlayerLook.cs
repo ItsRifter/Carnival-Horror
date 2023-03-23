@@ -33,7 +33,7 @@ public class PlayerLook : MonoBehaviour
     {
         KillPlayer();
 
-		yield return new WaitForSeconds(7);
+		yield return new WaitForSeconds(6);
 
         //Reset isDead and controls before reloading scene
         isDead = false;
@@ -51,7 +51,7 @@ public class PlayerLook : MonoBehaviour
         {
             playerBody.transform.rotation = 
                 Quaternion.RotateTowards(playerBody.transform.rotation, 
-                new Quaternion(-0.5f, 0f, 0f, 0f), Time.deltaTime * 50.0f);
+                new Quaternion(-0.5f, 0f, 0f, 0f), Time.deltaTime * 80.0f);
 
 			StartCoroutine(AwaitDeath());
 		}
