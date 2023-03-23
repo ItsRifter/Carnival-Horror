@@ -37,6 +37,8 @@ public class PlayerMove : MonoBehaviour
     public Slider breathingUIBar;
     public Image barFillImage;
 
+    public AudioSource heavyBreathingAudioSource;
+
     // Start is called before the first frame update
 
     void Start()
@@ -121,11 +123,12 @@ public class PlayerMove : MonoBehaviour
             //Slowly regain breath while not holding breath.
             if (breathingTimeLeft < totalBreathingTime)
             {
-                breathingTimeLeft += Time.deltaTime * .3f;
+                breathingTimeLeft += Time.deltaTime * .4f;
                 print("Slowly recovering breath");
             }
             else
             {
+                heavyBreathingAudioSource.Stop();
                 barFillImage.color = Color.white;
                 breathingTimeLeft = totalBreathingTime;
                 isHoldingBreathOnCooldown = false;
@@ -148,6 +151,7 @@ public class PlayerMove : MonoBehaviour
             isHoldingBreath = false;
             isHoldingBreathOnCooldown = true;
             breathingTimeLeft = 0;
+            heavyBreathingAudioSource.Play();
         }
     }
 }
