@@ -22,9 +22,12 @@ public class Gate : MonoBehaviour
 
         //We make the collider a non-trigger collider to ensure the player cannot pass through the gate
         //once they enter the maze.
-        gateMeshRenderer.enabled = true;
-        gateCollider.isTrigger = false;
-        audioSource.Play();
-        hasEnteredMaze = true;
+        if(other.gameObject.tag == "Player")
+        {
+            gateMeshRenderer.enabled = true;
+            gateCollider.isTrigger = false;
+            audioSource.Play();
+            hasEnteredMaze = true;
+        }
     }
 }
