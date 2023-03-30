@@ -56,7 +56,7 @@ public class PlayerAudio : MonoBehaviour
         }
         else if (Physics.Raycast(transform.position, dir, out hit, Mathf.Infinity, ~layerMask) && hit.transform == creatureTransform && !CreatureWithinViewFrustrum())
         {
-            print("Behind player");
+            //print("Behind player");
             audioLowPassFilter.cutoffFrequency = Mathf.Lerp(audioLowPassFilter.cutoffFrequency, Mathf.Clamp(10000f * cutoffPercentage, 800f, 3000f), Time.deltaTime * 2f);
         }
         else

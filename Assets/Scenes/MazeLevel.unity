@@ -10195,7 +10195,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000038146973, y: 0.0000038146973}
+  m_AnchoredPosition: {x: 0.000038146973, y: 0}
   m_SizeDelta: {x: 465.376, y: 342.4247}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1767307988
@@ -10211,7 +10211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.13725491}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.8}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -11451,7 +11451,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueActiviationRange: 4
   playerTransform: {fileID: 1001121595}
-  dialoguePanelGO: {fileID: 1476196270}
+  dialoguePanelGO: {fileID: 623341141}
   dialogueTextBox: {fileID: 580699489}
   speakerBox: {fileID: 1978586758}
   dialoguePrompt: {fileID: 750440577}
@@ -11463,23 +11463,23 @@ MonoBehaviour:
   - speakerName: You
     message: Excuse me, sir? Do you work here?
     options: []
-    next: 0
+    next: 1
     endOfTree: 0
   - speakerName: Conrad
     message: Do I look like I'm here as a guest? You do have eyes, yes? Try using
       them.
     options: []
-    next: 3
+    next: 2
     endOfTree: 0
   - speakerName: You
     message: There's no need to be rude, Sir-
     options: []
-    next: 3
+    next: 4
     endOfTree: 0
   - speakerName: Conrad
     message: We hope you enjoy your stay here
     options: []
-    next: 4
+    next: 5
     endOfTree: 0
   - speakerName: 
     message: 
@@ -11493,14 +11493,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1956175213}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -17.9, y: 1.171, z: -7.09}
+  m_LocalRotation: {x: -0, y: 0.707107, z: -0, w: 0.7071066}
+  m_LocalPosition: {x: -1.68, y: 1.171, z: 10.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 16
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &1967776315
 GameObject:
   m_ObjectHideFlags: 0
@@ -12086,11 +12086,11 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1767307987}
   - {fileID: 1662378454}
   - {fileID: 623341142}
   - {fileID: 750440578}
   - {fileID: 430636325}
+  - {fileID: 1767307987}
   - {fileID: 919208432}
   m_Father: {fileID: 0}
   m_RootOrder: 8
@@ -12358,6 +12358,10 @@ PrefabInstance:
     - target: {fileID: 2145070104707556884, guid: f022655d1e7f5fe44bcd7237299106c7, type: 3}
       propertyPath: m_Name
       value: Creature
+      objectReference: {fileID: 0}
+    - target: {fileID: 2145070104707556884, guid: f022655d1e7f5fe44bcd7237299106c7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2145070104707556888, guid: f022655d1e7f5fe44bcd7237299106c7, type: 3}
       propertyPath: m_Height

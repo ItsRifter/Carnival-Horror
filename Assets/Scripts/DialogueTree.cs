@@ -90,6 +90,7 @@ public class DialogueTree : MonoBehaviour
 
                 playerIsTalking = true;
                 playerMove.enabled = false;
+                print("movement disabled");
 
                 //The last dialogue segment is not the last message
                 if (!dialogueSegments[curDialogueIndex].endOfTree)
@@ -139,6 +140,7 @@ public class DialogueTree : MonoBehaviour
                 //if it is the last message, allow player movement and disable the panel
                 else
                 {
+                    print("Player is not talking");
                     playerIsTalking = false;
                     dialoguePanelGO.SetActive(false);
                 }
@@ -154,6 +156,7 @@ public class DialogueTree : MonoBehaviour
             PlayerLook.ToggleLooking(true);
             PlayerLook.SetCursorState(CursorLockMode.Locked);
             curDialogueIndex = 0;
+            print("Player move");
             playerMove.enabled = true;
         }
     }
