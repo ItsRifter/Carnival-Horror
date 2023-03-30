@@ -38,6 +38,9 @@ public class PlayerMove : MonoBehaviour
     public Image barFillImage;
 
     public AudioSource heavyBreathingAudioSource;
+    public AudioSource breatheInAudioSource;
+    public AudioSource breatheOutAudioSource;
+    public bool isBreathingIn;
 
     // Start is called before the first frame update
 
@@ -111,13 +114,28 @@ public class PlayerMove : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
 
+        if(Input.GetKeyDown(KeyCode.Space) && breathingTimeLeft > 0 && !isHoldingBreathOnCooldown && !breatheInAudioSource.isPlaying)
+        {
+            breatheInAudioSource.Play();
+        }
+
+        if(Input.GetKeyUp(KeyCode.Space) && !isHoldingBreathOnCooldown && !breatheInAudioSource.isPlaying)
+        {
+            breatheOutAudioSource.Play();
+        }
+
         //Hold breath when spacebar is pressed.
         if(Input.GetKey(KeyCode.Space) && breathingTimeLeft > 0 && !isHoldingBreathOnCooldown) 
         {
+            if (isBreathingIn)
+            {
+                isBreathingIn = false;
+            }
             HoldBreath();
         }
         else
         {
+            isBreathingIn = false;
             holdingBreathText.text = "Not holding breath";
             isHoldingBreath = false;
             //Slowly regain breath while not holding breath.

@@ -17,8 +17,11 @@ public class Gate : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        //This boolean ensures that the gate closing sound is only played once.
         if (hasEnteredMaze) return;
 
+        //We make the collider a non-trigger collider to ensure the player cannot pass through the gate
+        //once they enter the maze.
         gateMeshRenderer.enabled = true;
         gateCollider.isTrigger = false;
         audioSource.Play();
