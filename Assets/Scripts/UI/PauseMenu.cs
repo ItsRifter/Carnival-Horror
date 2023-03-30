@@ -20,7 +20,12 @@ public class PauseMenu : MonoBehaviour
             else
                 Resume();
         }
-    }
+
+        if(isPaused)
+			Cursor.lockState = CursorLockMode.Confined;
+		else
+			Cursor.lockState = CursorLockMode.Locked;
+	}
 
     void Pause()
     {
