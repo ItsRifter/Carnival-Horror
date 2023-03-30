@@ -11460,22 +11460,19 @@ MonoBehaviour:
   - {fileID: 387567220}
   - {fileID: 1550309412}
   dialogueSegments:
-  - speakerName: Conrad
-    message: Hippy bobbity doo
-    options:
-    - optionText: Who are you?
-      branchPath: 1
-    - optionText: What is this place?
-      branchPath: 2
+  - speakerName: You
+    message: Excuse me, sir? Do you work here?
+    options: []
     next: 0
     endOfTree: 0
   - speakerName: Conrad
-    message: Good sir, I am Conrad
+    message: Do I look like I'm here as a guest? You do have eyes, yes? Try using
+      them.
     options: []
     next: 3
     endOfTree: 0
-  - speakerName: Conrad
-    message: You are in our lovely Karnival good sir
+  - speakerName: You
+    message: There's no need to be rude, Sir-
     options: []
     next: 3
     endOfTree: 0
