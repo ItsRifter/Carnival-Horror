@@ -66,7 +66,6 @@ public class PauseMenu : MonoBehaviour
     public void ReturnToMenu()
     {
         isPaused = false;
-        //TODO: Create a Main Menu
-        //SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene("MainMenu");
     }
 }
