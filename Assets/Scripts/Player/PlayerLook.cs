@@ -39,8 +39,9 @@ public class PlayerLook : MonoBehaviour
         isDead = false;
         PlayerMove.ToggleControls(true);
 
-		//Reloads the maze level
-		SceneManager.LoadScene(0);
+        //Reloads the maze level
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+		SceneManager.LoadScene(currentSceneIndex);
 
 	}
 
