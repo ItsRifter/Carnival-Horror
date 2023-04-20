@@ -156,7 +156,7 @@ public class DialogueTree : MonoBehaviour
             PlayerLook.ToggleLooking(true);
             PlayerLook.SetCursorState(CursorLockMode.Locked);
             curDialogueIndex = 0;
-            print("Player move");
+            //print("Player move");
             playerMove.enabled = true;
         }
     }

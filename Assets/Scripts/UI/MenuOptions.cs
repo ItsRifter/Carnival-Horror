@@ -119,6 +119,7 @@ public class MenuOptions : MonoBehaviour
 
 	public void StartGame()
 	{
+		Time.timeScale = 1.0f;
 		isPaused = false;
 		SceneManager.LoadScene("MazeLevel");
 	}
