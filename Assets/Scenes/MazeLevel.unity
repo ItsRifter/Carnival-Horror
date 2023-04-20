@@ -1375,6 +1375,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2145070104707556892, guid: f022655d1e7f5fe44bcd7237299106c7, type: 3}
   m_PrefabInstance: {fileID: 2127394155}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &280470729 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2145070104707556893, guid: f022655d1e7f5fe44bcd7237299106c7, type: 3}
+  m_PrefabInstance: {fileID: 2127394155}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 280470719}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dde3e91fcd98f44ebfd2f9ef409a906, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &284098697
 GameObject:
   m_ObjectHideFlags: 0
@@ -3408,7 +3419,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gateMeshRenderer: {fileID: 251344578}
   gateCollider: {fileID: 251344577}
-  creatureGO: {fileID: 280470719}
+  creatureNav: {fileID: 280470729}
+  creatureAudioSource: {fileID: 280470721}
 --- !u!65 &621359831
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12362,6 +12374,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2145070104707556884, guid: f022655d1e7f5fe44bcd7237299106c7, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2145070104707556885, guid: f022655d1e7f5fe44bcd7237299106c7, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2145070104707556888, guid: f022655d1e7f5fe44bcd7237299106c7, type: 3}
@@ -12434,6 +12450,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2145070104707556892, guid: f022655d1e7f5fe44bcd7237299106c7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2145070104707556893, guid: f022655d1e7f5fe44bcd7237299106c7, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2145070104707556893, guid: f022655d1e7f5fe44bcd7237299106c7, type: 3}
