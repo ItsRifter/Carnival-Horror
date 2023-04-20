@@ -8,11 +8,13 @@ public class Gate : MonoBehaviour
     public Collider gateCollider;
     private AudioSource audioSource;
     private bool hasEnteredMaze;
+    public CreatureNav creatureNav;
+    public AudioSource creatureAudioSource;
 
     // Start is called before the first frame update
     void Start()
     {
-        audioSource= GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -28,6 +30,8 @@ public class Gate : MonoBehaviour
             gateCollider.isTrigger = false;
             audioSource.Play();
             hasEnteredMaze = true;
+            creatureNav.enabled = true;
+            creatureAudioSource.enabled = true;
         }
     }
 }

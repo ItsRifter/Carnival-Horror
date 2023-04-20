@@ -3408,6 +3408,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gateMeshRenderer: {fileID: 251344578}
   gateCollider: {fileID: 251344577}
+  creatureGO: {fileID: 280470719}
 --- !u!65 &621359831
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5934,7 +5935,7 @@ Transform:
   m_GameObject: {fileID: 1032913180}
   m_LocalRotation: {x: -0, y: -0.70710707, z: -0, w: 0.70710653}
   m_LocalPosition: {x: 7.4085, y: -4.752887, z: -63.866684}
-  m_LocalScale: {x: 1, y: 1, z: -82.018776}
+  m_LocalScale: {x: 1, y: 1, z: 82}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1566075002}
@@ -12361,7 +12362,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2145070104707556884, guid: f022655d1e7f5fe44bcd7237299106c7, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2145070104707556888, guid: f022655d1e7f5fe44bcd7237299106c7, type: 3}
       propertyPath: m_Height
