@@ -59,9 +59,13 @@ public class MenuOptions : MonoBehaviour
 		}
 
 		if (isPaused)
+		{
 			Cursor.lockState = CursorLockMode.Confined;
+		}
 		else
+		{
 			Cursor.lockState = CursorLockMode.Locked;
+		}
 	}
 
 	void Pause()

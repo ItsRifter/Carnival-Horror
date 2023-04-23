@@ -58,7 +58,7 @@ public class DialogueTree : MonoBehaviour
 
     public DialogueSegment[] dialogueSegments;
 
-    bool playerIsTalking;
+    public static bool playerIsTalking;
     bool shouldUpdate;
 
     void Start()
@@ -71,6 +71,8 @@ public class DialogueTree : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        print("Cursor lockstate: " + Cursor.lockState);
+
         RaycastHit hit;
         //If we are looking at NPC and we're within range, enable button prompt.
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, dialogueActiviationRange) && hit.transform == this.transform && Vector3.Distance(transform.position, playerTransform.position) <= dialogueActiviationRange)
@@ -90,7 +92,7 @@ public class DialogueTree : MonoBehaviour
 
                 playerIsTalking = true;
                 playerMove.enabled = false;
-                print("movement disabled");
+                print("E Key playerIsTalking: " + playerIsTalking);
 
                 //The last dialogue segment is not the last message
                 if (!dialogueSegments[curDialogueIndex].endOfTree)
@@ -141,7 +143,7 @@ public class DialogueTree : MonoBehaviour
                 else
                 {
                     print("Player is not talking");
-                    playerIsTalking = false;
+                    //playerIsTalking = false;
                     dialoguePanelGO.SetActive(false);
                 }
             }
@@ -153,10 +155,12 @@ public class DialogueTree : MonoBehaviour
 
         if (!playerIsTalking)
         {
+            //print("player is talking" + playerIsTalking);
             PlayerLook.ToggleLooking(true);
             PlayerLook.SetCursorState(CursorLockMode.Locked);
             curDialogueIndex = 0;
-            //print("Player move");
+            print("Player move");
+            print("Player is talking: " + playerIsTalking);
             playerMove.enabled = true;
         }
     }

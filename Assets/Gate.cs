@@ -29,11 +29,15 @@ public class Gate : MonoBehaviour
         {
             gateMeshRenderer.enabled = true;
             gateCollider.isTrigger = false;
+
+            //Plays gate closing sound
             audioSource.Play();
-            hasEnteredMaze = true;
+
             creatureNav.enabled = true;
             creatureAudioSource.enabled = true;
+
             heartbeatWarn.enabled = true;
+            hasEnteredMaze = true;
         }
     }
 }

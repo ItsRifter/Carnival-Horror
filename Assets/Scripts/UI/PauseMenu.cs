@@ -23,7 +23,7 @@ public class PauseMenu : MonoBehaviour
 
         if(isPaused)
 			Cursor.lockState = CursorLockMode.Confined;
-		else
+		else if(!isPaused && !DialogueTree.playerIsTalking)
 			Cursor.lockState = CursorLockMode.Locked;
 	}
 
@@ -40,7 +40,7 @@ public class PauseMenu : MonoBehaviour
         isPaused = false;
         pauseMenu.SetActive(false);
         Time.timeScale = 1.0f;
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void OpenMenu(GameObject toMenu)
