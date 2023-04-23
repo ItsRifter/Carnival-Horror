@@ -18,6 +18,11 @@ public class PlayerLook : MonoBehaviour
 
     static bool isDead = false;
 
+    public Transform respawnTransform;
+    public Transform creatureTransform;
+    public Vector3 creatureRespawnPos;
+    public bool hasResetPosition = false;
+
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -40,8 +45,18 @@ public class PlayerLook : MonoBehaviour
         PlayerMove.ToggleControls(true);
 
         //Reloads the maze level
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-		SceneManager.LoadScene(currentSceneIndex);
+        print("Resetting player pos");
+
+        if(!hasResetPosition)
+        {
+            playerBody.transform.position = respawnTransform.position;
+            playerBody.transform.rotation = respawnTransform.rotation;
+            creatureTransform.position = creatureRespawnPos;
+            hasResetPosition = true;
+        }
+
+        //int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+		//SceneManager.LoadScene(currentSceneIndex);
 
 	}
 
@@ -53,6 +68,8 @@ public class PlayerLook : MonoBehaviour
             playerBody.transform.rotation = 
                 Quaternion.RotateTowards(playerBody.transform.rotation, 
                 new Quaternion(-0.5f, 0f, 0f, 0f), Time.deltaTime * 80.0f);
+
+            hasResetPosition = false;
 
 			StartCoroutine(AwaitDeath());
 		}
