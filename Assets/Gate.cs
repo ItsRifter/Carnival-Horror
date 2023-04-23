@@ -10,6 +10,7 @@ public class Gate : MonoBehaviour
     private bool hasEnteredMaze;
     public CreatureNav creatureNav;
     public AudioSource creatureAudioSource;
+    public HeartbeatWarn heartbeatWarn;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +33,7 @@ public class Gate : MonoBehaviour
             hasEnteredMaze = true;
             creatureNav.enabled = true;
             creatureAudioSource.enabled = true;
+            heartbeatWarn.enabled = true;
         }
     }
 }
