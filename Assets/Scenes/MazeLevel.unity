@@ -4197,15 +4197,15 @@ PrefabInstance:
       objectReference: {fileID: 280470727}
     - target: {fileID: 8695668245531433570, guid: 0b14d5cfc0d27ec42abf1f70bd10ba6c, type: 3}
       propertyPath: creatureRespawnPos.x
-      value: 28
+      value: -6
       objectReference: {fileID: 0}
     - target: {fileID: 8695668245531433570, guid: 0b14d5cfc0d27ec42abf1f70bd10ba6c, type: 3}
       propertyPath: creatureRespawnPos.y
-      value: 0.8
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8695668245531433570, guid: 0b14d5cfc0d27ec42abf1f70bd10ba6c, type: 3}
       propertyPath: creatureRespawnPos.z
-      value: 2
+      value: -40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11680,7 +11680,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4329626537584449500, guid: a69e4745d7536664c88592be3dd832a9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.37
+      value: 0.82
       objectReference: {fileID: 0}
     - target: {fileID: 4329626537584449500, guid: a69e4745d7536664c88592be3dd832a9, type: 3}
       propertyPath: m_LocalPosition.z
