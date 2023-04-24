@@ -15116,6 +15116,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2145070104707556885, guid: f022655d1e7f5fe44bcd7237299106c7, type: 3}
+      propertyPath: Loop
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2145070104707556885, guid: f022655d1e7f5fe44bcd7237299106c7, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
@@ -15216,9 +15220,37 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1001121599}
     - target: {fileID: 2145070104707556893, guid: f022655d1e7f5fe44bcd7237299106c7, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 280470721}
+    - target: {fileID: 2145070104707556893, guid: f022655d1e7f5fe44bcd7237299106c7, type: 3}
       propertyPath: playerTransform
       value: 
       objectReference: {fileID: 1001121595}
+    - target: {fileID: 2145070104707556893, guid: f022655d1e7f5fe44bcd7237299106c7, type: 3}
+      propertyPath: creatureSounds.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2145070104707556893, guid: f022655d1e7f5fe44bcd7237299106c7, type: 3}
+      propertyPath: creatureSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 19fd5317aa354724b9a14ccf931c881a, type: 3}
+    - target: {fileID: 2145070104707556893, guid: f022655d1e7f5fe44bcd7237299106c7, type: 3}
+      propertyPath: creatureSounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 853442393bf317a45a5dfcac38520e22, type: 3}
+    - target: {fileID: 2145070104707556893, guid: f022655d1e7f5fe44bcd7237299106c7, type: 3}
+      propertyPath: creatureSounds.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: c5f1d7d61ea474443a45279a82cb5bd1, type: 3}
+    - target: {fileID: 2145070104707556893, guid: f022655d1e7f5fe44bcd7237299106c7, type: 3}
+      propertyPath: creatureSounds.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 65cf124bc46c01445ac310b0f4d4e7dc, type: 3}
+    - target: {fileID: 2145070104707556893, guid: f022655d1e7f5fe44bcd7237299106c7, type: 3}
+      propertyPath: creatureSounds.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: 8a9280248157ef349ae1d43102215e2b, type: 3}
     - target: {fileID: 2145070104707556894, guid: f022655d1e7f5fe44bcd7237299106c7, type: 3}
       propertyPath: m_Enabled
       value: 0

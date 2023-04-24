@@ -20,6 +20,8 @@ public class CreatureNav : MonoBehaviour
     public Vector3 lastHeardPlayerPosition;
     public PlayerMove playerMove;
     public bool isMovingToLastHeardPlayerPos;
+    public AudioClip[] creatureSounds;
+    public AudioSource audioSource;
 
     [SerializeField]
     float attackDist;
@@ -34,7 +36,16 @@ public class CreatureNav : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    { 
+    {
+        if (!audioSource.isPlaying)
+        {
+            print("ASDASD");
+            int randInt = Random.Range(0, creatureSounds.Length);
+            audioSource.clip = creatureSounds[randInt];
+            audioSource.Play();
+        }
+        
+
         //If the creature is within range of player to attack
         if(Physics.CheckSphere(transform.position, attackDist, LayerMask.GetMask("Player") ) )
         {
