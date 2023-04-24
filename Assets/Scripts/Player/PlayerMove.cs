@@ -146,11 +146,7 @@ public class PlayerMove : MonoBehaviour
             }
             else
             {
-                heavyBreathingAudioSource.Stop();
-                barFillImage.color = Color.white;
-                breathingTimeLeft = totalBreathingTime;
-                isHoldingBreathOnCooldown = false;
-                isHoldingBreath = false;
+                ResetBreathingTime();
             }
         }
 	}
@@ -171,5 +167,14 @@ public class PlayerMove : MonoBehaviour
             breathingTimeLeft = 0;
             heavyBreathingAudioSource.Play();
         }
+    }
+
+    public void ResetBreathingTime()
+    {
+        heavyBreathingAudioSource.Stop();
+        barFillImage.color = Color.white;
+        breathingTimeLeft = totalBreathingTime;
+        isHoldingBreathOnCooldown = false;
+        isHoldingBreath = false;
     }
 }

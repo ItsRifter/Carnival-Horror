@@ -23,6 +23,7 @@ public class PlayerLook : MonoBehaviour
     public Vector3 creatureRespawnPos;
     private bool hasResetPosition = false;
     public CharacterController controller;
+    public PlayerMove playerMove;
 
     void Start()
     {
@@ -48,13 +49,7 @@ public class PlayerLook : MonoBehaviour
 
         if(!hasResetPosition)
         {
-            //The character controller is disabled before resetting the player's transform, as it was causing the player's position to not reset.
-            controller.enabled = false;
-            playerBody.transform.position = respawnTransform.position;
-            controller.enabled = true;
-            playerBody.transform.rotation = respawnTransform.rotation;
-            creatureTransform.position = creatureRespawnPos;
-            hasResetPosition = true;
+            ResetGame();
         }
 	}
 
@@ -97,5 +92,17 @@ public class PlayerLook : MonoBehaviour
     public static void SetCursorState(CursorLockMode state)
     {
         Cursor.lockState = state;
+    }
+
+    void ResetGame()
+    {
+        //The character controller is disabled before resetting the player's transform, as it was causing the player's position to not reset.
+        controller.enabled = false;
+        playerBody.transform.position = respawnTransform.position;
+        controller.enabled = true;
+        playerBody.transform.rotation = respawnTransform.rotation;
+        creatureTransform.position = creatureRespawnPos;
+        playerMove.ResetBreathingTime();
+        hasResetPosition = true;
     }
 }
