@@ -4103,6 +4103,18 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7259067261981005103, guid: 0b14d5cfc0d27ec42abf1f70bd10ba6c, type: 3}
+      propertyPath: warnings.Array.data[0].WarningRange
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7259067261981005103, guid: 0b14d5cfc0d27ec42abf1f70bd10ba6c, type: 3}
+      propertyPath: warnings.Array.data[1].WarningRange
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 7259067261981005103, guid: 0b14d5cfc0d27ec42abf1f70bd10ba6c, type: 3}
+      propertyPath: warnings.Array.data[2].WarningRange
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8695668245093823481, guid: 0b14d5cfc0d27ec42abf1f70bd10ba6c, type: 3}
       propertyPath: m_RootOrder
       value: 7
