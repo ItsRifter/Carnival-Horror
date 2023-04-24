@@ -21,7 +21,8 @@ public class PlayerLook : MonoBehaviour
     public Transform respawnTransform;
     public Transform creatureTransform;
     public Vector3 creatureRespawnPos;
-    public bool hasResetPosition = false;
+    private bool hasResetPosition = false;
+    public CharacterController controller;
 
     void Start()
     {
@@ -44,20 +45,17 @@ public class PlayerLook : MonoBehaviour
         isDead = false;
         PlayerMove.ToggleControls(true);
 
-        //Reloads the maze level
-        print("Resetting player pos");
 
         if(!hasResetPosition)
         {
+            //The character controller is disabled before resetting the player's transform, as it was causing the player's position to not reset.
+            controller.enabled = false;
             playerBody.transform.position = respawnTransform.position;
+            controller.enabled = true;
             playerBody.transform.rotation = respawnTransform.rotation;
             creatureTransform.position = creatureRespawnPos;
             hasResetPosition = true;
         }
-
-        //int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-		//SceneManager.LoadScene(currentSceneIndex);
-
 	}
 
     void Update()

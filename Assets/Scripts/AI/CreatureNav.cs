@@ -62,7 +62,7 @@ public class CreatureNav : MonoBehaviour
         //If player is within hearing range of the creature, set canHearPlayer to true.
         if(Vector3.Distance(transform.position, playerTransform.position) <= hearingRadius && !playerMove.isHoldingBreath)
         {
-            print("Moving to last heard player position");
+            //print("Moving to last heard player position");
             lastHeardPlayerPosition = playerTransform.position;
             canHearPlayer = true;
             isMovingToLastHeardPlayerPos = true;
