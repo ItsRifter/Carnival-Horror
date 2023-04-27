@@ -3,7 +3,32 @@ guid: 259641bfd3f6e364bb48513fdf1f1873
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: door
+    second: {fileID: 2100000, guid: beff25d1818952d46a45cbb22c80e134, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: points
+    second: {fileID: 2100000, guid: 1bc892b86c5777447bffecc6971fade8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: string1
+    second: {fileID: 2100000, guid: 81899ef878637cf4dbfc77540a204575, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tent
+    second: {fileID: 2100000, guid: 1cbbdd2a9447c904ba9b57aab5d6a94f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: top1
+    second: {fileID: 2100000, guid: d99f60a58023d44489bc69926ff86290, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -89,7 +114,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.5
+    globalScale: 50
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
