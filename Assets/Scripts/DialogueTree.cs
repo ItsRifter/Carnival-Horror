@@ -71,7 +71,7 @@ public class DialogueTree : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print("Cursor lockstate: " + Cursor.lockState);
+        // print("Cursor lockstate: " + Cursor.lockState);
 
         RaycastHit hit;
         //If we are looking at NPC and we're within range, enable button prompt.
@@ -169,6 +169,8 @@ public class DialogueTree : MonoBehaviour
     public void SelectOption(int index = 0)
     {
         curDialogueIndex = dialogueSegments[curDialogueIndex].options[index].branchPath;
+        print("Index: " + curDialogueIndex);
+        print(dialogueSegments.Length - 1);
         shouldUpdate = true;
     }
 }

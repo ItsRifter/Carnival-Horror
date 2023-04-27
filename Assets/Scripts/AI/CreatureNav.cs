@@ -39,7 +39,6 @@ public class CreatureNav : MonoBehaviour
     {
         if (!audioSource.isPlaying)
         {
-            print("ASDASD");
             int randInt = Random.Range(0, creatureSounds.Length);
             audioSource.clip = creatureSounds[randInt];
             audioSource.Play();
