@@ -25,6 +25,7 @@ public class PlayerLook : MonoBehaviour
     public CharacterController controller;
     public PlayerMove playerMove;
 
+    //By default, lock the cursor
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -38,6 +39,7 @@ public class PlayerLook : MonoBehaviour
 
     public IEnumerator AwaitDeath()
     {
+        //Kill the player, setting isDead to true
         KillPlayer();
 
 		yield return new WaitForSeconds(6);
@@ -45,7 +47,6 @@ public class PlayerLook : MonoBehaviour
         //Reset isDead and controls before reloading scene
         isDead = false;
         PlayerMove.ToggleControls(true);
-
 
         if(!hasResetPosition)
         {
@@ -55,15 +56,17 @@ public class PlayerLook : MonoBehaviour
 
     void Update()
     {
-        //If the player is dead, do death aniamtions
+        //If the player is dead, do death animations
         if(isDead)
         {
+            //Make the player's transform act like they fell down
             playerBody.transform.rotation = 
                 Quaternion.RotateTowards(playerBody.transform.rotation, 
                 new Quaternion(-0.5f, 0f, 0f, 0f), Time.deltaTime * 80.0f);
 
             hasResetPosition = false;
 
+            //Await dying and restarting the level
 			StartCoroutine(AwaitDeath());
 		}
 
@@ -89,6 +92,7 @@ public class PlayerLook : MonoBehaviour
         allowLooking = toggle;
     }
 
+    //Sets the cursor state
     public static void SetCursorState(CursorLockMode state)
     {
         Cursor.lockState = state;
