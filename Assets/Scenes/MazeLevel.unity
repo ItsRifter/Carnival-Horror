@@ -4678,7 +4678,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8695668245397149196, guid: 0b14d5cfc0d27ec42abf1f70bd10ba6c, type: 3}
       propertyPath: m_Intensity
-      value: 1.2
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 8695668245531433570, guid: 0b14d5cfc0d27ec42abf1f70bd10ba6c, type: 3}
       propertyPath: mouseSens
