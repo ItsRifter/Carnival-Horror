@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -10,6 +11,8 @@ public class CreatureNav : MonoBehaviour
     private float randomSearchRadius;
     public float hearingRadius;
     public Vector3 destination;
+    //For showing where the creature is headed.
+    public Transform destinationDebugTransform;
     public bool randomDestinationFound;
     public bool hasReachedDestination;
     public Transform playerTransform;
@@ -29,7 +32,7 @@ public class CreatureNav : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        waitTimeLeft = maxWaitTime;
+        waitTimeLeft = Random.Range(3.0f, maxWaitTime);
         randomSearchRadius = agent.height * 20.0f;
         sphereCollider.radius = hearingRadius;
     }
@@ -37,6 +40,12 @@ public class CreatureNav : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        destinationDebugTransform.position = destination;
+        for (int i = 0; i < agent.path.corners.Length - 1; i++)
+        {
+            Debug.DrawLine(agent.path.corners[i], agent.path.corners[i + 1], Color.red);
+        }
+
         if (!audioSource.isPlaying)
         {
             int randInt = Random.Range(0, creatureSounds.Length);
@@ -61,10 +70,13 @@ public class CreatureNav : MonoBehaviour
         {
             //Move to random destination then wait for specified period of time once we've reached it.
             //Once creature has finished waiting, it goes back to moving randomly.
+            print("Destination: " + agent.SetDestination(destination) + destination);
+            print("Path status: " + agent.pathStatus);
             agent.SetDestination(destination);
 
             if (agent.remainingDistance <= 1.0f)
             {
+                print("Waiting");
                 Wait();
             }
         }
@@ -115,7 +127,7 @@ public class CreatureNav : MonoBehaviour
         if (waitTimeLeft <= 0.0f)
         {
             randomDestinationFound = false;
-            waitTimeLeft = maxWaitTime;
+            waitTimeLeft = Random.Range(3.0f, maxWaitTime);
         }
     }
 

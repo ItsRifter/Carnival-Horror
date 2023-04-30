@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 
 public class PlayerLook : MonoBehaviour
@@ -18,9 +19,11 @@ public class PlayerLook : MonoBehaviour
 
     static bool isDead = false;
 
+    //Player respawn position.
     public Transform respawnTransform;
-    public Transform creatureTransform;
-    public Vector3 creatureRespawnPos;
+    public Transform creatureResetTransform;
+    public NavMeshAgent creatureAgent;
+    //public Vector3 creatureRespawnPos;
     private bool hasResetPosition = false;
     public CharacterController controller;
     public PlayerMove playerMove;
@@ -105,7 +108,7 @@ public class PlayerLook : MonoBehaviour
         playerBody.transform.position = respawnTransform.position;
         controller.enabled = true;
         playerBody.transform.rotation = respawnTransform.rotation;
-        creatureTransform.position = creatureRespawnPos;
+        creatureAgent.Warp(creatureResetTransform.position);
         playerMove.ResetBreathingTime();
         hasResetPosition = true;
     }
