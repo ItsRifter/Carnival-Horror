@@ -16,6 +16,9 @@ public struct DialogueOptions
 [System.Serializable]
 public struct DialogueSegment
 {
+    [Tooltip("Sprite of speaker")]
+    public Sprite speakerSprite;
+
     [Tooltip("Who is currently speaking")]
     public string speakerName;
 
@@ -49,6 +52,7 @@ public class DialogueTree : MonoBehaviour
     public GameObject dialoguePanelGO;
     public TMP_Text dialogueTextBox;
     public TMP_Text speakerBox;
+    public Image speakerImage;
 
     SphereCollider sphereCollider;
     public GameObject dialoguePrompt;
@@ -113,7 +117,16 @@ public class DialogueTree : MonoBehaviour
                     wasBranchingSegment = false;
 
                     //Update speaker and dialogue text 
-                    speakerBox.text = dialogueSegments[curDialogueIndex].speakerName;
+                    if (dialogueSegments[curDialogueIndex].speakerSprite != null)
+                    {
+                        speakerImage.enabled = true;
+                        speakerImage.sprite = dialogueSegments[curDialogueIndex].speakerSprite;
+                    }
+                    else
+                    {
+                        speakerImage.enabled = false;
+                    }
+                    speakerBox.text = dialogueSegments[curDialogueIndex].speakerName;          
                     dialogueTextBox.text = dialogueSegments[curDialogueIndex].message;
 
                     //New segment has branch options
