@@ -93,6 +93,7 @@ public class DialogueTree : MonoBehaviour
             {
                 inConversation = true;
                 RestrictPlayerActions();
+                wasBranchingSegment = true;
             }    
         }
         else
