@@ -72,6 +72,10 @@ public class CreatureNav : MonoBehaviour
             //Once creature has finished waiting, it goes back to moving randomly.
             print("Destination: " + agent.SetDestination(destination) + destination);
             print("Path status: " + agent.pathStatus);
+            /*if(agent.pathStatus == NavMeshPathStatus.PathPartial)
+            {
+                randomDestinationFound = false;
+            }*/
             agent.SetDestination(destination);
 
             if (agent.remainingDistance <= 1.0f)
@@ -111,7 +115,7 @@ public class CreatureNav : MonoBehaviour
         {
             Vector3 randomPoint = _sphereCenterPoint + Random.insideUnitSphere * _searchRange;
             NavMeshHit hit;
-            if (NavMesh.SamplePosition(randomPoint, out hit, 1.0f, NavMesh.AllAreas))
+            if (NavMesh.SamplePosition(randomPoint, out hit, 1.0f, 1))
             {
                 _destiniation = hit.position;
                 return true;

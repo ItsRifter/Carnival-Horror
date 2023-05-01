@@ -141,7 +141,7 @@ public class PlayerMove : MonoBehaviour
             //Slowly regain breath while not holding breath.
             if (breathingTimeLeft < totalBreathingTime)
             {
-                breathingTimeLeft += Time.deltaTime * .4f;
+                breathingTimeLeft += Time.deltaTime * .5f;
                 print("Slowly recovering breath");
             }
             else
