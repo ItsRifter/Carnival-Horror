@@ -78,10 +78,13 @@ public class DialogueTree : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Can the player talk and not in a conversation already
         if(canTalk && !inConversation)        
         {
+            //Show to the player they can talk
             dialoguePrompt.SetActive(true);
 
+            //Starts the conversation after the player interacts
             if (Input.GetKeyDown(KeyCode.E))
             {
                 inConversation = true;
@@ -95,7 +98,7 @@ public class DialogueTree : MonoBehaviour
 
         if (inConversation)
         {
-            //Dialogue updating
+            //Should the tree update
             if (ShouldUpdateTree())
             {
                 shouldUpdate = false;
@@ -103,15 +106,13 @@ public class DialogueTree : MonoBehaviour
                 //The last dialogue segment is not the last message
                 if (!dialogueSegments[curDialogueIndex].endOfTree)
                 {
+                    //If the last segment didn't have branching options, move onto the next segment
                     if(!wasBranchingSegment)
                         curDialogueIndex = dialogueSegments[curDialogueIndex].next;
 
                     wasBranchingSegment = false;
 
-                    //Hide any previous option buttons
-                    foreach (var btn in optionBtns)
-                        btn.SetActive(false);
-
+                    //Update speaker and dialogue text 
                     speakerBox.text = dialogueSegments[curDialogueIndex].speakerName;
                     dialogueTextBox.text = dialogueSegments[curDialogueIndex].message;
 
