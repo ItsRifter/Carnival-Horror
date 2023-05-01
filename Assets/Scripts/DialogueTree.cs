@@ -1,3 +1,4 @@
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -60,43 +61,53 @@ public class DialogueTree : MonoBehaviour
 
     public static bool playerIsTalking;
     bool shouldUpdate;
+    bool canTalk;
+    bool inConversation;
+    bool wasBranchingSegment;
 
     void Start()
     {
         sphereCollider = GetComponent<SphereCollider>();
         sphereCollider.radius = dialogueActiviationRange;
         curDialogueIndex = 0;
+        canTalk = false;
+        inConversation = false;
+        wasBranchingSegment = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        // print("Cursor lockstate: " + Cursor.lockState);
-
-        RaycastHit hit;
-        //If we are looking at NPC and we're within range, enable button prompt.
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, dialogueActiviationRange) && hit.transform == this.transform && Vector3.Distance(transform.position, playerTransform.position) <= dialogueActiviationRange)
+        if(canTalk && !inConversation)        
         {
-            //If the player isn't talking, show prompt, else hide prompt
-            if(!playerIsTalking)
-                dialoguePrompt.SetActive(true);
-            else
-                dialoguePrompt.SetActive(false);
+            dialoguePrompt.SetActive(true);
 
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                inConversation = true;
+                RestrictPlayerActions();
+            }    
+        }
+        else
+        {
+            dialoguePrompt.SetActive(false);
+        }
+
+        if (inConversation)
+        {
             //Dialogue updating
-            if (Input.GetKeyDown(KeyCode.E) || shouldUpdate)
+            if (ShouldUpdateTree())
             {
                 shouldUpdate = false;
-                PlayerLook.ToggleLooking(false);
-                PlayerLook.SetCursorState(CursorLockMode.Confined);
-
-                playerIsTalking = true;
-                playerMove.enabled = false;
-                print("E Key playerIsTalking: " + playerIsTalking);
 
                 //The last dialogue segment is not the last message
                 if (!dialogueSegments[curDialogueIndex].endOfTree)
                 {
+                    if(!wasBranchingSegment)
+                        curDialogueIndex = dialogueSegments[curDialogueIndex].next;
+
+                    wasBranchingSegment = false;
+
                     //Hide any previous option buttons
                     foreach (var btn in optionBtns)
                         btn.SetActive(false);
@@ -104,37 +115,10 @@ public class DialogueTree : MonoBehaviour
                     speakerBox.text = dialogueSegments[curDialogueIndex].speakerName;
                     dialogueTextBox.text = dialogueSegments[curDialogueIndex].message;
 
-                    //If the current segment has no options, set index to next in tree
-                    if (dialogueSegments[curDialogueIndex].options.Length == 0)
-                        curDialogueIndex = dialogueSegments[curDialogueIndex].next;
-                    //If it does have options
-                    else
+                    //New segment has branch options
+                    if(dialogueSegments[curDialogueIndex].options.Length > 0)
                     {
-                        int optionIndex = 0;
-
-                        //Show every option buttons and set their option text
-                        foreach (var btn in optionBtns)
-                        {
-                            //check if the length of options exceed the index, give a warning debug message if it does
-                            if (dialogueSegments[curDialogueIndex].options.Length - 1 < optionIndex)
-                            {
-                                Debug.LogWarning("A option in this dialogue exceeds the index");
-                                break;
-                            }
-                            string optionTxt = dialogueSegments[curDialogueIndex].options[optionIndex].optionText;
-
-                            //If an option text has null or empty string, continue on but leave a warning debug message
-                            if (string.IsNullOrEmpty(optionTxt))
-                            {
-                                Debug.LogWarning("A option in this dialogue has no option text");
-                                continue;
-                            }
-
-                            btn.SetActive(true);
-                            btn.GetComponentInChildren<TMP_Text>().text = optionTxt;
-
-                            optionIndex++;
-                        }
+                        ShowOptions();
                     }
 
                     dialoguePanelGO.SetActive(true);
@@ -142,35 +126,113 @@ public class DialogueTree : MonoBehaviour
                 //if it is the last message, allow player movement and disable the panel
                 else
                 {
-                    print("Player is not talking");
                     //playerIsTalking = false;
                     dialoguePanelGO.SetActive(false);
+                    RestorePlayerActions();
+                    inConversation = false;
                 }
             }
         }
-        else
+    }
+
+    private bool ShouldUpdateTree()
+    {
+        //if we should update by default
+        if (shouldUpdate) return true;
+
+        //if the player pressed the E key to continue
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            dialoguePrompt.SetActive(false);
+            //While there are no current options in the segment
+            if (dialogueSegments[curDialogueIndex].options.Length == 0)
+                return true;
         }
 
-        if (!playerIsTalking)
+        return false;
+    }
+
+    private void RestrictPlayerActions()
+    {
+        PlayerLook.ToggleLooking(false);
+        PlayerLook.SetCursorState(CursorLockMode.Confined);
+
+        playerIsTalking = true;
+        playerMove.enabled = false;
+    }
+
+    private void RestorePlayerActions()
+    {
+        PlayerLook.ToggleLooking(true);
+        PlayerLook.SetCursorState(CursorLockMode.Locked);
+        curDialogueIndex = 0;
+        playerMove.enabled = true;
+        playerIsTalking = false;
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag.Contains("Player"))
         {
-            //print("player is talking" + playerIsTalking);
-            PlayerLook.ToggleLooking(true);
-            PlayerLook.SetCursorState(CursorLockMode.Locked);
-            curDialogueIndex = 0;
-            print("Player move");
-            print("Player is talking: " + playerIsTalking);
-            playerMove.enabled = true;
+            canTalk = true;
         }
     }
 
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag.Contains("Player"))
+        {
+            canTalk = false;
+        }
+    }
+
+    private void ShowOptions()
+    {
+        wasBranchingSegment = true;
+        int optionIndex = 0;
+
+        //Show every option buttons and set their option text
+        foreach (var btn in optionBtns)
+        {
+            //check if the length of options exceed the index, give a warning debug message if it does
+            if (dialogueSegments[curDialogueIndex].options.Length - 1 < optionIndex)
+            {
+                Debug.LogWarning("A option in this dialogue exceeds the index");
+                break;
+            }
+
+            string optionTxt = dialogueSegments[curDialogueIndex].options[optionIndex].optionText;
+
+            //If an option text has null or empty string, continue on but leave a warning debug message
+            if (string.IsNullOrEmpty(optionTxt))
+            {
+                Debug.LogWarning("A option in this dialogue has no option text");
+                continue;
+            }
+
+            btn.SetActive(true);
+            btn.GetComponentInChildren<TMP_Text>().text = optionTxt;
+
+            optionIndex++;
+        }
+    }
+
+    private void HideOptions()
+    {
+        foreach (var btn in optionBtns)
+        {
+            btn.SetActive(false);
+        }
+    }
 
     public void SelectOption(int index = 0)
     {
         curDialogueIndex = dialogueSegments[curDialogueIndex].options[index].branchPath;
-        print("Index: " + curDialogueIndex);
-        print(dialogueSegments.Length - 1);
+
+        speakerBox.text = dialogueSegments[curDialogueIndex].speakerName;
+        dialogueTextBox.text = dialogueSegments[curDialogueIndex].message;
+
+        HideOptions();
+
         shouldUpdate = true;
     }
 }
