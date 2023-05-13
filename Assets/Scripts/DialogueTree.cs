@@ -184,19 +184,11 @@ public class DialogueTree : MonoBehaviour
         playerIsTalking = false;
     }
 
-    public void OnTriggerStay(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
-        RaycastHit[] hits;
-        hits = Physics.RaycastAll(Camera.main.transform.position, Camera.main.transform.forward, Mathf.Infinity);
-        if (hits.Length < 2) return;
-        print(hits[1].transform.name);
-        if (other.gameObject.tag.Contains("Player") && hits[1].transform.name == "Conrad NPC" || hits[1].transform.name == "Conbooth" || hits[1].transform.name == "backwall") 
+        if (other.gameObject.tag.Contains("Player")) 
         {
             canTalk = true;
-        }
-        else
-        {
-            canTalk = false;
         }
     }
 
