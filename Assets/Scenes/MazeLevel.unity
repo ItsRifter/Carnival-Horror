@@ -3580,7 +3580,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -3620,14 +3620,14 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.51
-  m_Height: 2.603435
+  m_Radius: 10.1
+  m_Height: 48.6
   m_Direction: 1
-  m_Center: {x: -13.4, y: 0.2, z: -20.64}
+  m_Center: {x: -0.37, y: 20.9, z: 6.7}
 --- !u!64 &423349178
 MeshCollider:
   m_ObjectHideFlags: 0

@@ -27,17 +27,25 @@ public class Gate : MonoBehaviour
         //once they enter the maze.
         if(other.gameObject.tag == "Player")
         {
-            gateMeshRenderer.enabled = true;
-            gateCollider.isTrigger = false;
-
-            //Plays gate closing sound
-            audioSource.Play();
-
-            creatureNav.enabled = true;
-            creatureAudioSource.enabled = true;
-
-            heartbeatWarn.enabled = true;
-            hasEnteredMaze = true;
+            StartCoroutine(AwaitEnable());
         }
+    }
+
+    public IEnumerator AwaitEnable()
+    {
+        gateMeshRenderer.enabled = true;
+         gateCollider.isTrigger = false;
+
+         //Plays gate closing sound
+        audioSource.Play();
+        yield return new WaitForSeconds(1);
+
+         creatureNav.enabled = true;
+         creatureAudioSource.enabled = true;
+
+         heartbeatWarn.enabled = true;
+         hasEnteredMaze = true;
+
+        //yield return new WaitForSeconds(1);
     }
 }
