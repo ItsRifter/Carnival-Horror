@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.LowLevel;
 using UnityEngine.UI;
 
 public class OptionsMenu : MonoBehaviour
 {
     [SerializeField]
     TMPro.TMP_Dropdown resolutionDropdown;
+    public Slider mouseSensSlider;
+    public PlayerLook playerLook;
 
     Resolution[] resolutions;
 
@@ -44,5 +47,10 @@ public class OptionsMenu : MonoBehaviour
     public void SetFullScreen(bool isFull)
     {
         Screen.fullScreen = isFull;
+    }
+
+    public void ChangeMouseSensitivity()
+    {
+        playerLook.mouseSens = mouseSensSlider.value;
     }
 }

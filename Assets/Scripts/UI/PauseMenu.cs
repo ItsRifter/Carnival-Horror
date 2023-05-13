@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
     public static bool isPaused = false;
     public GameObject pauseMenu;
-
     GameObject lastMenu;
 
 	void Update()
@@ -78,4 +78,6 @@ public class PauseMenu : MonoBehaviour
         Cursor.visible = true;
         SceneManager.LoadScene("MainMenu");
     }
+
+
 }

@@ -44,6 +44,11 @@ public class PlayerLook : MonoBehaviour
 
 	}
 
+    public float GetMouseSensitivity()
+    {
+        return mouseSens;
+    }
+
     public IEnumerator AwaitDeath()
     {
         //Kill the player, setting isDead to true
