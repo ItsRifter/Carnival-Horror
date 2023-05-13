@@ -25,6 +25,8 @@ public class CreatureNav : MonoBehaviour
     public bool isMovingToLastHeardPlayerPos;
     public AudioClip[] creatureSounds;
     public AudioSource audioSource;
+    public Transform[] wanderDestinations;
+    private bool startCooldownHasEnded = false;
 
     [SerializeField]
     float attackDist;
@@ -32,7 +34,7 @@ public class CreatureNav : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        waitTimeLeft = Random.Range(3.0f, maxWaitTime);
+        waitTimeLeft = maxWaitTime;
         randomSearchRadius = agent.height * 20.0f;
         sphereCollider.radius = hearingRadius;
     }
@@ -40,6 +42,12 @@ public class CreatureNav : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(!startCooldownHasEnded)
+        {
+            //waitTimeLeft = 5.0f;
+            Wait();
+        }
+
         destinationDebugTransform.position = destination;
         for (int i = 0; i < agent.path.corners.Length - 1; i++)
         {
@@ -62,8 +70,9 @@ public class CreatureNav : MonoBehaviour
         }
 
         //Find a random point to go to if we haven't already.
-        if (!randomDestinationFound && CheckForRandomNavMeshPoint(playerTransform.position, randomSearchRadius, out destination) && !isMovingToLastHeardPlayerPos)
+        if (!randomDestinationFound && /*CheckForRandomNavMeshPoint(playerTransform.position, randomSearchRadius, out destination) &&*/ !isMovingToLastHeardPlayerPos && startCooldownHasEnded)
         {
+            destination = RandomlySelectDestination();
             randomDestinationFound = true;
         }
         else
@@ -125,11 +134,18 @@ public class CreatureNav : MonoBehaviour
         return false;
     }
 
+    public Vector3 RandomlySelectDestination()
+    {
+        int randInt = Random.Range(0, wanderDestinations.Length - 1);
+        return wanderDestinations[randInt].position;
+    }
+
     private void Wait()
     {
         waitTimeLeft -= Time.deltaTime;
         if (waitTimeLeft <= 0.0f)
         {
+            startCooldownHasEnded = true;
             randomDestinationFound = false;
             waitTimeLeft = Random.Range(3.0f, maxWaitTime);
         }
