@@ -38,7 +38,7 @@ public class Gate : MonoBehaviour
 
          //Plays gate closing sound
         audioSource.Play();
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2);
 
          creatureNav.enabled = true;
          creatureAudioSource.enabled = true;

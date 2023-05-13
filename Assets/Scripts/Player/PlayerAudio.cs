@@ -12,11 +12,7 @@ public class PlayerAudio : MonoBehaviour
     public float distanceMultiplier;
     public float distanceBetweenPlayerAndCreature;
     public int maxObstacleCountForFullCutoffFrequency;
-    // Start is called before the first frame update
-    void Start()
-    {
 
-    }
 
     // Update is called once per frame
     void Update()

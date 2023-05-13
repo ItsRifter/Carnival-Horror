@@ -51,7 +51,7 @@ public class GrabAndThrow : MonoBehaviour
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(eyeCam.transform.position, eyeCam.transform.forward, out hit, eyeRange))
+        if (Physics.Raycast(eyeCam.transform.position, eyeCam.transform.forward, out hit, eyeRange, -1, QueryTriggerInteraction.Collide))
         {
             if (hit.rigidbody != null && hit.rigidbody.tag.Contains("Usable"))
                 return hit.rigidbody;

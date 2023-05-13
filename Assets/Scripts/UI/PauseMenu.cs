@@ -21,10 +21,16 @@ public class PauseMenu : MonoBehaviour
                 Resume();
         }
 
-        if(isPaused)
-			Cursor.lockState = CursorLockMode.Confined;
-		else if(!isPaused && !DialogueTree.playerIsTalking)
-			Cursor.lockState = CursorLockMode.Locked;
+        if (isPaused)
+        {
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
+        }
+        else if (!isPaused && !DialogueTree.playerIsTalking)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
 	}
 
     void Pause()
@@ -33,6 +39,7 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(true);
         Time.timeScale = 0.0f;
         Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
     }
 
     public void Resume()
@@ -40,6 +47,7 @@ public class PauseMenu : MonoBehaviour
         isPaused = false;
         pauseMenu.SetActive(false);
         Time.timeScale = 1.0f;
+        Cursor.visible = false;
         //Cursor.lockState = CursorLockMode.Locked;
     }
 
@@ -66,6 +74,8 @@ public class PauseMenu : MonoBehaviour
     public void ReturnToMenu()
     {
         isPaused = false;
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
         SceneManager.LoadScene("MainMenu");
     }
 }

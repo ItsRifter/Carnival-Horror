@@ -170,6 +170,7 @@ public class DialogueTree : MonoBehaviour
     {
         PlayerLook.ToggleLooking(false);
         PlayerLook.SetCursorState(CursorLockMode.Confined);
+        Cursor.visible = true;
 
         playerIsTalking = true;
         playerMove.enabled = false;
@@ -179,6 +180,7 @@ public class DialogueTree : MonoBehaviour
     {
         PlayerLook.ToggleLooking(true);
         PlayerLook.SetCursorState(CursorLockMode.Locked);
+        Cursor.visible = false;
         curDialogueIndex = 0;
         playerMove.enabled = true;
         playerIsTalking = false;
