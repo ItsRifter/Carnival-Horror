@@ -4,6 +4,7 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
+using TMPro;
 
 public class CreatureNav : MonoBehaviour
 {
@@ -27,6 +28,10 @@ public class CreatureNav : MonoBehaviour
     public AudioSource audioSource;
     public Transform[] wanderDestinations;
     private bool startCooldownHasEnded = false;
+
+    private bool hasPlayerHeldBreathBefore;
+    public Image breathingPromptPanel;
+    public TMP_Text breathingPromptText;
 
     [SerializeField]
     float attackDist;
@@ -97,22 +102,36 @@ public class CreatureNav : MonoBehaviour
             }
         }
 
-        //If player is within hearing range of the creature, set canHearPlayer to true.
-        if(Vector3.Distance(transform.position, playerTransform.position) <= hearingRadius && !playerMove.isHoldingBreath)
+        if (Vector3.Distance(transform.position, playerTransform.position) <= hearingRadius * 1.3f && !playerMove.isHoldingBreath)
         {
+            if (!hasPlayerHeldBreathBefore)
+            {
+                breathingPromptPanel.enabled = true;
+                breathingPromptText.enabled = true;
+            }
+        }
+
+        //If player is within hearing range of the creature, set canHearPlayer to true.
+        if (Vector3.Distance(transform.position, playerTransform.position) <= hearingRadius && !playerMove.isHoldingBreath)
+        {
+      
             //print("Moving to last heard player position");
             lastHeardPlayerPosition = playerTransform.position;
             canHearPlayer = true;
             isMovingToLastHeardPlayerPos = true;
-        }else if(Vector3.Distance(transform.position, playerTransform.position) <= hearingRadius && playerMove.isHoldingBreath)
+        } else if(Vector3.Distance(transform.position, playerTransform.position) <= hearingRadius && playerMove.isHoldingBreath)
         {
             canHearPlayer = false;
+            breathingPromptPanel.enabled = false;
+            breathingPromptText.enabled = false;
+            hasPlayerHeldBreathBefore = true;
             print("Player is within hearing radius, but player is holding their breath so ignore them.");
         }
 
         if (isMovingToLastHeardPlayerPos)
         {
             agent.SetDestination(lastHeardPlayerPosition);
+            destinationDebugTransform.position = lastHeardPlayerPosition;
 
             if(agent.remainingDistance <= 1.0f)
             {
