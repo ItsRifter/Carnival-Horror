@@ -27,6 +27,8 @@ public class PlayerLook : MonoBehaviour
     private bool hasResetPosition = false;
     public CharacterController controller;
     public PlayerMove playerMove;
+    public AudioSource playerDeathSFX;
+    private bool hasPlayedDeathSFX;
 
     //By default, lock the cursor
     void Start()
@@ -38,14 +40,19 @@ public class PlayerLook : MonoBehaviour
     public static void KillPlayer()
     {
         isDead = true;
+
 	}
 
     public IEnumerator AwaitDeath()
     {
         //Kill the player, setting isDead to true
         KillPlayer();
-
-		yield return new WaitForSeconds(6);
+        if (!playerDeathSFX.isPlaying && !hasPlayedDeathSFX)
+        {
+            playerDeathSFX.Play();
+            hasPlayedDeathSFX = true;
+        }
+        yield return new WaitForSeconds(6);
 
         //Reset isDead and controls before reloading scene
         isDead = false;
@@ -65,7 +72,7 @@ public class PlayerLook : MonoBehaviour
             //Make the player's transform act like they fell down
             playerBody.transform.rotation = 
                 Quaternion.RotateTowards(playerBody.transform.rotation, 
-                new Quaternion(-0.5f, 0f, 0f, 0f), Time.deltaTime * 80.0f);
+                new Quaternion(-0.5f, 0f, 0f, 0f), Time.deltaTime * 150.0f);
 
             hasResetPosition = false;
 
@@ -106,10 +113,11 @@ public class PlayerLook : MonoBehaviour
         //The character controller is disabled before resetting the player's transform, as it was causing the player's position to not reset.
         controller.enabled = false;
         playerBody.transform.position = respawnTransform.position;
+        playerBody.transform.rotation = Quaternion.Euler(0, 90, 0);
         controller.enabled = true;
-        playerBody.transform.rotation = respawnTransform.rotation;
         creatureAgent.Warp(creatureResetTransform.position);
         playerMove.ResetBreathingTime();
         hasResetPosition = true;
+        hasPlayedDeathSFX = false;
     }
 }

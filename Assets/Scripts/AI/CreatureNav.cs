@@ -81,13 +81,16 @@ public class CreatureNav : MonoBehaviour
             //Once creature has finished waiting, it goes back to moving randomly.
             print("Destination: " + agent.SetDestination(destination) + destination);
             print("Path status: " + agent.pathStatus);
-            /*if(agent.pathStatus == NavMeshPathStatus.PathPartial)
-            {
-                randomDestinationFound = false;
-            }*/
             agent.SetDestination(destination);
+            print("agent destination: "+ agent.destination);
+            print("Agent remaining distance: " + agent.remainingDistance);
 
-            if (agent.remainingDistance <= 1.0f)
+            if (Vector3.Distance(transform.position, destination) <= 1.0f)
+            {
+                hasReachedDestination = true;
+            }
+
+            if(hasReachedDestination)
             {
                 print("Waiting");
                 Wait();
@@ -147,6 +150,7 @@ public class CreatureNav : MonoBehaviour
         {
             startCooldownHasEnded = true;
             randomDestinationFound = false;
+            hasReachedDestination = false;
             waitTimeLeft = Random.Range(3.0f, maxWaitTime);
         }
     }
